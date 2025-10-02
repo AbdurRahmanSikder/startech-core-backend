@@ -1,0 +1,33 @@
+{
+  "name": "startech-core-backend",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/AbdurRahmanSikder/startech-core-backend#readme",
+  "bugs": {
+    "url": "https://github.com/AbdurRahmanSikder/startech-core-backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbdurRahmanSikder/startech-core-backend.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "lint:fix": "eslint 'src/**/*.{ts,tsx}' --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.19.0",
+    "nodemon": "^3.1.10"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.36.0",
+    "eslint": "^9.36.0",
+    "globals": "^16.4.0",
+    "typescript-eslint": "^8.45.0"
+  }
+}

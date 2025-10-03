@@ -20,12 +20,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "cloudinary": "^2.7.0",
     "express": "^5.1.0",
     "mongoose": "^8.19.0",
+    "multer": "^2.0.2",
     "nodemon": "^3.1.10"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
+    "@types/multer": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^8.45.0",
     "@typescript-eslint/parser": "^8.45.0",
     "eslint": "^9.36.0",

@@ -1,13 +1,61 @@
 {
   "compilerOptions": {
-    "target": "ES2021",
+    // Compile to ES2020 JavaScript (modern, widely supported by Node.js 14+)
+    // ✅   balances modern features with compatibility
+    "target": "ES2020",
+
+    // Use CommonJS module system (require/module.exports)
+    // ✅  for Node.js backends - best compatibility
     "module": "commonjs",
-    "strict": true,
+
+    // How TypeScript resolves module imports (use Node.js resolution algorithm)
+    // ✅  for Node.js - finds modules in node_modules correctly
+    "moduleResolution": "node",
+
+    // Allows default imports from CommonJS modules (import express from 'express')
+    // ✅ Essential for Node.js - makes imports work smoothly
     "esModuleInterop": true,
+
+    // Allows 'import x from y' even if y only has 'export ='
+    // ✅ Good practice - works with esModuleInterop for cleaner imports
+    "allowSyntheticDefaultImports": true,
+
+    // Allows importing .json files directly (import data from './config.json')
+    // ✅ Useful feature - commonly used for config files
+    "resolveJsonModule": true,
+
+    // Skip type checking of declaration files (.d.ts) from node_modules
+    // ✅ Recommended - speeds up compilation significantly
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "outDir": "dist"
+
+    // Enable all strict type-checking options (no implicit any, strict null checks, etc.)
+    // ✅ Best practice - catches more errors at compile time
+    "strict": true,
+
+    // Output compiled JavaScript files to ./dist folder
+    // ✅ Industry  - keeps compiled code separate from source
+    "outDir": "./dist",
+
+    // Specify that all source files are in ./src
+    // ✅   - organized project structure
+    "rootDir": "./src",
+
+    // Base directory for resolving non-relative module names
+    // ✅ Good for path aliases (import from '@/utils' instead of '../../utils')
+    "baseUrl": "./",
+
+    "sourceMap": true,              // Generate .map files for debugging
+    "forceConsistentCasingInFileNames": true,  // Prevent case-sensitivity issues
+    "noImplicitReturns": true,      // Ensure all code paths return a value
+    "noFallthroughCasesInSwitch": true,  // Catch switch statement bugs
+    
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+
+  // Include all TypeScript files in src folder
+  // ✅  - tells TypeScript what to compile
+  "include": ["src/**/*"],
+
+  // Exclude node_modules from compilation
+  // ✅ Essential - prevents compiling third-party packages
+  "exclude": ["node_modules" , "dist"]
 }

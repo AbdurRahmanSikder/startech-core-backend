@@ -5,7 +5,6 @@
     "target": "ES2020",
 
     // Use CommonJS module system (require/module.exports)
-    // ✅  for Node.js backends - best compatibility
     "module": "commonjs",
 
     // How TypeScript resolves module imports (use Node.js resolution algorithm)
@@ -17,7 +16,7 @@
     "esModuleInterop": true,
 
     // Allows 'import x from y' even if y only has 'export ='
-    // ✅ Good practice - works with esModuleInterop for cleaner imports
+    // ✅  works with esModuleInterop for cleaner imports
     "allowSyntheticDefaultImports": true,
 
     // Allows importing .json files directly (import data from './config.json')
@@ -43,7 +42,7 @@
     // Base directory for resolving non-relative module names
     // ✅ Good for path aliases (import from '@/utils' instead of '../../utils')
     "baseUrl": "./",
-
+    "noImplicitAny": true, // disallows implicit 'any'
     "sourceMap": true,              // Generate .map files for debugging
     "forceConsistentCasingInFileNames": true,  // Prevent case-sensitivity issues
     "noImplicitReturns": true,      // Ensure all code paths return a value
@@ -53,7 +52,7 @@
 
   // Include all TypeScript files in src folder
   // ✅  - tells TypeScript what to compile
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "tests"],
 
   // Exclude node_modules from compilation
   // ✅ Essential - prevents compiling third-party packages

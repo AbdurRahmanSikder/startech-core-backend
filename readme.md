@@ -27,6 +27,5 @@ startech-core-backend/
 ├── package.json # Dependencies & scripts
 ├── package-lock.json # Lock file
 ├── tsconfig.json # TypeScript config
-├── server.js # JS entrypoint (if running without TS build)
 ├── setup.sh # Setup script for environment
 └── README.md # Project documentation

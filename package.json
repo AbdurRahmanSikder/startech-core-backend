@@ -1,7 +1,7 @@
 {
   "name": "startech-core-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Core backend for Startech application",
   "homepage": "https://github.com/AbdurRahmanSikder/startech-core-backend#readme",
   "bugs": {
     "url": "https://github.com/AbdurRahmanSikder/startech-core-backend/issues"
@@ -11,15 +11,26 @@
     "url": "git+https://github.com/AbdurRahmanSikder/startech-core-backend.git"
   },
   "license": "ISC",
-  "author": "",
-  "main": "src/server.ts",
+  "author": "Abdur Rahman 19cse040@gmail.com",
+  "main": "dist/server.js",
   "scripts": {
-    "start": "node dist/server.js",
     "dev": "nodemon src/server.ts",
     "build": "tsc",
+    "start": "node dist/server.js",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format:check": "prettier --check .",
+    "validate": "npm run typecheck && npm run lint && npm run format:check",
+    "prepare": "husky",
+    "clean": "rm -rf dist"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "cloudinary": "^2.7.0",
@@ -38,6 +49,8 @@
     "eslint": "^9.36.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^16.4.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.3",
     "nodemon": "^3.1.10",
     "prettier": "^3.6.2",
     "ts-node": "^10.9.2",

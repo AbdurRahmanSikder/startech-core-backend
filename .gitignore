@@ -6,6 +6,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+.pnpm-store/
+.yarn/
+.pnp.*
+package-lock.json  
 
 # =====================
 # Environment Variables
@@ -16,6 +20,7 @@ pnpm-debug.log*
 .env.development.local
 .env.test.local
 .env.production.local
+*.env.backup
 
 # =====================
 # Build / Dist / Cache
@@ -28,26 +33,36 @@ coverage/
 .nyc_output/
 tmp/
 temp/
+*.tsbuildinfo  # TypeScript incremental build info
+.turbo/  # If using Turborepo
+.next/  # If using Next.js
 
 # =====================
 # Logs
 # =====================
-logs
+logs/
 *.log
 *.log.*
 *.out
 *.err
 pm2.log
+lerna-debug.log*
 
 # =====================
 # OS / Editor
 # =====================
 .DS_Store
 Thumbs.db
+Desktop.ini
 .idea/
 .vscode/
 *.swp
 *.swo
+*~
+.project
+.classpath
+.settings/
+.vs/
 
 # =====================
 # Public Generated
@@ -55,12 +70,31 @@ Thumbs.db
 public/dist/
 public/uploads/
 public/temp/
+uploads/  # Common upload directory
 
 # =====================
 # Testing
 # =====================
 jest-coverage/
 test-results.xml
+.nyc_output/
+__snapshots__/
+*.spec.js.snap
+
+# =====================
+# Database
+# =====================
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+dump.rdb  # Redis
+
+# =====================
+# Docker (if using)
+# =====================
+.dockerignore
+docker-compose.override.yml
 
 # =====================
 # Misc
@@ -71,4 +105,7 @@ test-results.xml
 *.tgz
 *.bak
 *.orig
+*.patch
 setup.sh
+.eslintcache
+.stylelintcache

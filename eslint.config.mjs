@@ -41,6 +41,7 @@ export default [
           allowConciseArrowFunctionExpressionsStartingWithVoid: true
         }
       ],
+      "ignorePatterns": ["*.js"],
       // Require typing on exported functions & module boundaries
       "@typescript-eslint/explicit-module-boundary-types": "warn"
     }

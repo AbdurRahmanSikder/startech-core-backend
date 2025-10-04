@@ -11,8 +11,8 @@ export default [
       "**/dist/**",
       "**/build/**",
       "**/coverage/**",
-      "**/*.js" // ignore any .js files in the project
-    ]
+      "**/*.js", // ignore any .js files in the project
+    ],
   },
 
   // Base ESLint recommended rules
@@ -29,12 +29,12 @@ export default [
       sourceType: "module",
       globals: {
         ...globals.node,
-        ...globals.es2021
+        ...globals.es2021,
       },
       parserOptions: {
         project: "./tsconfig.json",
-        tsconfigRootDir: import.meta.dirname
-      }
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
     rules: {
       // 🔹 TypeScript strictness
@@ -44,21 +44,21 @@ export default [
         {
           argsIgnorePattern: "^_", // allow unused args like (_, res)
           varsIgnorePattern: "^_",
-          caughtErrorsIgnorePattern: "^_"
-        }
+          caughtErrorsIgnorePattern: "^_",
+        },
       ],
       "@typescript-eslint/consistent-type-imports": [
         "error",
         {
           prefer: "type-imports",
-          fixStyle: "separate-type-imports"
-        }
+          fixStyle: "separate-type-imports",
+        },
       ],
 
       // 🔹 Best practices for backend
       "no-console": ["warn", { allow: ["warn", "error", "info"] }], // allow error logs
-      "eqeqeq": ["error", "always"], // force ===
-      "curly": ["error", "all"], // require curly braces
+      eqeqeq: ["error", "always"], // force ===
+      curly: ["error", "all"], // require curly braces
       "no-var": "error", // prefer const/let
       "prefer-const": "error", // use const when possible
       "prefer-template": "error", // use template literals
@@ -71,8 +71,8 @@ export default [
           allowExpressions: true, // don't force inline arrow handlers
           allowTypedFunctionExpressions: true,
           allowHigherOrderFunctions: true,
-          allowConciseArrowFunctionExpressionsStartingWithVoid: true
-        }
+          allowConciseArrowFunctionExpressionsStartingWithVoid: true,
+        },
       ],
       "@typescript-eslint/explicit-module-boundary-types": "warn",
 
@@ -86,9 +86,9 @@ export default [
             "res", // Express response
             "next", // Express next
             "acc", // Array.reduce accumulator
-            "draft" // Immer draft (if you use it)
-          ]
-        }
+            "draft", // Immer draft (if you use it)
+          ],
+        },
       ],
 
       // 🔹 Async/Promise best practices
@@ -102,12 +102,12 @@ export default [
         {
           allowString: true,
           allowNumber: false,
-          allowNullableObject: true
-        }
-      ]
-    }
+          allowNullableObject: true,
+        },
+      ],
+    },
   },
 
   // Disable conflicting rules with Prettier (must be last)
-  prettier
+  prettier,
 ];

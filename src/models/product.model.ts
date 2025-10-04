@@ -9,6 +9,7 @@ const productSchema = new Schema(
     shortDescription: String,
     price: { type: Number, require: true },
     comparePrice: Number,
+    sku: String,
     cost: Number, // internal
     quantity: Number,
     category: [{ type: Schema.Types.ObjectId, ref: "Category" }],

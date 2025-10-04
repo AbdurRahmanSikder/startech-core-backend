@@ -4,21 +4,21 @@ import connectDB from "./configs/db";
 import connectCloudinary from "./configs/cloudinary";
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port: number = parseInt(process.env.PORT ?? "4000", 10);
 
 //Middleware Configuration
 app.use(express.json());
-app.get("/", (req, res) => res.send("Api is working"));
+app.get("/", (_req, res) => res.send("Api is working"));
 
 //IIFE
-(async () => {
+void (async () => {
   try {
     await connectDB();
     await connectCloudinary();
-    console.log("👌 Cloudinary connected successfully");
+    console.info("👌 Cloudinary connected successfully");
 
     app.listen(port, () => {
-      console.log(`🌐 Visit: http://localhost:${port}`);
+      console.info(`🌐 Visit: http://localhost:${port}`);
     });
   } catch (error) {
     console.error("❌ Server failed to start:", error);

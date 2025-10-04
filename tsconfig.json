@@ -1,60 +1,124 @@
 {
   "compilerOptions": {
-    // Compile to ES2020 JavaScript (modern, widely supported by Node.js 14+)
-    // ✅   balances modern features with compatibility
-    "target": "ES2020",
+    /* Language and Environment */
+    // Compile to ES2022 (better async/await, private fields, top-level await)
+    // ✅ Node.js 18+ supports this fully - better performance & features
+    "target": "ES2022",
 
     // Use CommonJS module system (require/module.exports)
+    // ✅ Standard for Node.js - works with all npm packages
     "module": "commonjs",
 
-    // How TypeScript resolves module imports (use Node.js resolution algorithm)
-    // ✅  for Node.js - finds modules in node_modules correctly
+    // Include ES2022 library features
+    // ✅ Provides type definitions for modern JS features
+    "lib": ["ES2022"],
+
+    /* Module Resolution */
+    // Use Node.js resolution algorithm (finds modules in node_modules)
+    // ✅ Essential for Node.js projects
     "moduleResolution": "node",
 
-    // Allows default imports from CommonJS modules (import express from 'express')
-    // ✅ Essential for Node.js - makes imports work smoothly
+    // Allows default imports from CommonJS modules
+    // ✅ Makes imports cleaner: import express from 'express'
     "esModuleInterop": true,
 
-    // Allows 'import x from y' even if y only has 'export ='
-    // ✅  works with esModuleInterop for cleaner imports
+    // Works with esModuleInterop for better import compatibility
+    // ✅ Allows 'import x from y' even if y only has 'export ='
     "allowSyntheticDefaultImports": true,
 
-    // Allows importing .json files directly (import data from './config.json')
-    // ✅ Useful feature - commonly used for config files
+    // Allows importing .json files directly
+    // ✅ Useful for config files: import data from './config.json'
     "resolveJsonModule": true,
 
-    // Skip type checking of declaration files (.d.ts) from node_modules
-    // ✅ Recommended - speeds up compilation significantly
-    "skipLibCheck": true,
+    // Base directory for resolving non-relative module names
+    // ✅ Good for path aliases like '@/utils' instead of '../../utils'
+    "baseUrl": "./",
 
-    // Enable all strict type-checking options (no implicit any, strict null checks, etc.)
-    // ✅ Best practice - catches more errors at compile time
+    /* Type Checking - Maximum Safety */
+    // Enable all strict type-checking options
+    // ✅ Best practice - catches errors at compile time
     "strict": true,
 
-    // Output compiled JavaScript files to ./dist folder
-    // ✅ Industry  - keeps compiled code separate from source
+    // Disallow implicit 'any' types
+    // ✅ Already included in "strict", but explicit for clarity
+    "noImplicitAny": true,
+
+    // Ensure all code paths return a value
+    // ✅ Prevents forgetting return statements
+    "noImplicitReturns": true,
+
+    // Catch switch statement fallthrough bugs
+    // ✅ Requires explicit 'break' or '// falls through' comment
+    "noFallthroughCasesInSwitch": true,
+
+    // Error when code is unreachable
+    // ✅ Catches dead code after returns
+    "noUnusedLocals": true,
+
+    // Error on unused function parameters
+    // ✅ Keeps code clean (prefix with _ to allow: _unused)
+    "noUnusedParameters": true,
+
+    // Catch errors with function binding/calling
+    // ✅ Prevents 'this' binding issues
+    "noImplicitThis": true,
+
+    // Strict checks on null and undefined
+    // ✅ Already in "strict", explicit for backend safety
+    "strictNullChecks": true,
+
+    // Strict checks on function types
+    // ✅ Already in "strict", prevents callback type errors
+    "strictFunctionTypes": true,
+
+    /* Emit */
+    // Output compiled JavaScript files to ./dist
+    // ✅ Industry standard - separates source from build
     "outDir": "./dist",
 
     // Specify that all source files are in ./src
-    // ✅   - organized project structure
+    // ✅ Clean project structure
     "rootDir": "./src",
 
-    // Base directory for resolving non-relative module names
-    // ✅ Good for path aliases (import from '@/utils' instead of '../../utils')
-    "baseUrl": "./",
-    "noImplicitAny": true, // disallows implicit 'any'
-    "sourceMap": true,              // Generate .map files for debugging
-    "forceConsistentCasingInFileNames": true,  // Prevent case-sensitivity issues
-    "noImplicitReturns": true,      // Ensure all code paths return a value
-    "noFallthroughCasesInSwitch": true,  // Catch switch statement bugs
-    
+    // Generate .map files for debugging
+    // ✅ Essential for debugging TypeScript in production
+    "sourceMap": true,
+
+    // Remove comments from compiled JavaScript
+    // ✅ Smaller build size, cleaner output
+    "removeComments": true,
+
+    // Don't emit output if there are compilation errors
+    // ✅ Prevents broken builds from being deployed
+    "noEmitOnError": true,
+
+    // Generate .d.ts declaration files
+    // ✅ Useful if you plan to publish as npm package
+    "declaration": true,
+
+    // Put declaration files in dist folder
+    "declarationMap": true,
+
+    /* Interop Constraints */
+    // Enforce consistent casing in file names
+    // ✅ Prevents cross-platform issues (Windows vs Linux)
+    "forceConsistentCasingInFileNames": true,
+
+    // Treat each file as a separate module
+    // ✅ Better for tree-shaking and modern bundlers
+    "isolatedModules": true,
+
+    /* Completeness */
+    // Skip type checking of declaration files (.d.ts) from node_modules
+    // ✅ Recommended - speeds up compilation significantly
+    "skipLibCheck": true
   },
 
-  // Include all TypeScript files in src folder
-  // ✅  - tells TypeScript what to compile
-  "include": ["src/**/*", "tests"],
+  // Include all TypeScript files in src folder and tests
+  // ✅ Tells TypeScript what to compile
+  "include": ["src/**/*"],
 
-  // Exclude node_modules from compilation
+  // Exclude unnecessary folders from compilation
   // ✅ Essential - prevents compiling third-party packages
-  "exclude": ["node_modules" , "dist"]
+  "exclude": ["node_modules", "dist", "**/*.spec.ts", "**/*.test.ts"]
 }
